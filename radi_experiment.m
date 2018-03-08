@@ -1,3 +1,5 @@
+function [new_list]=radi_experiment()
+
 % Modified experiment file for RADI experiment
 rng shuffle % This needs to be at the beginning of each new script!
 %commandwindow
@@ -104,6 +106,12 @@ for t=2:length(subTasks_rand)
     current_list = subTasks_rand{1,t}{1,1};
     new_list = vertcat(new_list, current_list);
 end
+new_list.experiment = char(new_list.experiment);
+
+new_list_struct = dataset2struct(new_list);
+new_list_struct = transpose(new_list_struct);
+end
+
 
 
 
