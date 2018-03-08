@@ -1,4 +1,4 @@
-function [new_list]=radi_experiment()
+function [new_stimuli_struct, columnNames]=radi_experiment()
 
 % Modified experiment file for RADI experiment
 rng shuffle % This needs to be at the beginning of each new script!
@@ -24,6 +24,7 @@ rng shuffle % This needs to be at the beginning of each new script!
 %       9 subtasks in total
 
 % CREATE TASK SUBSETS
+settings.path_items='1_experiment/';
 dataFile='radi_test_2018-02-14.txt';
 sitsFile='SITS_5-10.txt';
 %data = dataset(tdfread(settings.items "radi_test_2018-02-14.txt"));
@@ -109,21 +110,22 @@ subTasks_rand{1:6};
 % Extract each element of the cell array subTasks_rand in order, then
 % concatenate them into a single data frame using vertcat
 
-% Create new_list by extracting first element of subTasks_rand
-new_list = subTasks_rand{1,1}{1,1};
+% Create new_stimuli by extracting first element of subTasks_rand
+new_stimuli = subTasks_rand{1,1}{1,1};
 for t=2:length(subTasks_rand)
     current_list = subTasks_rand{1,t}{1,1};
-    new_list = vertcat(new_list, current_list);
+    new_stimuli = vertcat(new_stimuli, current_list);
 end
-new_list.experiment = char(new_list.experiment);
-new_list.tasklabel = char(new_list.tasklabel);
-new_list.word = char(new_list.word);
-new_list.text = char(new_list.text);
-new_list.lab = char(new_list.lab);
-new_list.woi = char(new_list.woi);
+new_stimuli.experiment = char(new_stimuli.experiment);
+new_stimuli.tasklabel = char(new_stimuli.tasklabel);
+new_stimuli.word = char(new_stimuli.word);
+new_stimuli.text = char(new_stimuli.text);
+new_stimuli.lab = char(new_stimuli.lab);
+new_stimuli.woi = char(new_stimuli.woi);
 
-new_list_struct = dataset2struct(new_list);
-new_list_struct = transpose(new_list_struct);
+new_stimuli_struct = dataset2struct(new_stimuli);
+new_stimuli_struct = transpose(new_stimuli_struct);
+columnNames = fieldnames(new_stimuli_struct);
 end
 
 
