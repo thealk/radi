@@ -65,18 +65,27 @@ for p=1:length(picSkeleton)
     picSkeleton.woi(p) = picList(p);
 end
 
-dfdList1.id = 1;
-dfdList1.id(1:9) = 1;
-dfdList2.id = 2;
-dfdList2.id(1:9) = 2;
-dfdList3.id = 3;
-dfdList3.id(1:9) = 3;
-dfdList4.id = 4;
-dfdList4.id(1:9) = 4;
-sitSkeleton1.id = 5;
-sitSkeleton1.id(1:length(sitSkeleton1)) = 5;
-sitSkeleton2.id = 6;
-sitSkeleton2.id(1:length(sitSkeleton2)) = 6;
+
+% Remove the "remove" column in the dfdLists (this should really be in
+% randomizeDfd)
+dfdList1=dfdList1(:,1:end-1);
+dfdList2=dfdList2(:,1:end-1);
+dfdList3=dfdList3(:,1:end-1);
+dfdList4=dfdList4(:,1:end-1);
+% Don't really need the ID column, and it's getting mixed up with
+% participant in experiment.m
+% dfdList1.id = 1;
+% dfdList1.id(1:9) = 1;
+% dfdList2.id = 2;
+% dfdList2.id(1:9) = 2;
+% dfdList3.id = 3;
+% dfdList3.id(1:9) = 3;
+% dfdList4.id = 4;
+% dfdList4.id(1:9) = 4;
+% sitSkeleton1.id = 5;
+% sitSkeleton1.id(1:length(sitSkeleton1)) = 5;
+% sitSkeleton2.id = 6;
+% sitSkeleton2.id(1:length(sitSkeleton2)) = 6;
 
 % NOW JOIN
 %subTasks = [dfdList1; dfdList2; dfdList3; dfdList4; sitSkeleton1;
@@ -107,6 +116,11 @@ for t=2:length(subTasks_rand)
     new_list = vertcat(new_list, current_list);
 end
 new_list.experiment = char(new_list.experiment);
+new_list.tasklabel = char(new_list.tasklabel);
+new_list.word = char(new_list.word);
+new_list.text = char(new_list.text);
+new_list.lab = char(new_list.lab);
+new_list.woi = char(new_list.woi);
 
 new_list_struct = dataset2struct(new_list);
 new_list_struct = transpose(new_list_struct);

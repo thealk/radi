@@ -6,7 +6,8 @@ function [dfd1, dfd2, dfd3, dfd4]=randomizeDfd(dfd)
     dfd_short.remove = zeros(length(dfd_short),1);
     % 4 is the number of playlists the dfd will be broken into
     for d=1:4
-    temp = dfd(randsample(length(dfd),dfdListLength),:);
+    %temp = dfd(randsample(length(dfd),dfdListLength),:);
+    temp = dfd_short(randsample(length(dfd_short),dfdListLength),:);
     genvarname('dfd',num2str(d));
     eval(['dfd',num2str(d) '= temp']);
 

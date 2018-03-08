@@ -7,6 +7,12 @@ clear all
 
 clc
 
+% THIS WAS ADDED BECAUSE SYNC ERRORS WERE CAUSING SCRIPT TO CRASH UPON
+% RUNNING
+% CHECK TO SEE IT DOESN'T DO ANYTHING FATAL
+Screen('Preference', 'SkipSyncTests', 1);
+
+
 % item file (should be a tab-separated files, encoded in UTF-8)
 % only columns that are labeled in the header row will be read into a data structure
 
@@ -199,6 +205,7 @@ end
 
 [allItems,columnNames]=tdfimport([settings.path_items itemFile]);
 
+allItems = new_list_struct;
 experimentNames=unique({ allItems.experiment });
 nExperiments=length(experimentNames);
 [items{1:nExperiments}]=deal([]);
