@@ -10,7 +10,7 @@ clc
 % item file (should be a tab-separated files, encoded in UTF-8)
 % only columns that are labeled in the header row will be read into a data structure
 
-itemFile='radi_test.txt';
+itemFile='radi_test_2018-02-14.txt';
 
 %Input and Output device (your present choice is displayed when you run
 %script.
@@ -318,6 +318,7 @@ end
 %Generate randomized list for participant
 [playList, nTrials]=generatePlaylist(items,pList,experimentNames);
 
+%%%%%%%%%%%%%%%%%%%%% RUN RADI_SETUP.M
 
 % output design of experiment for confirmation
 for i=1:nSessions
@@ -365,9 +366,9 @@ for i=1:nSessions
         
     end
     
-    while KbCheck(-1); end;
+    while KbCheck(-1); end
     disp('ok?');
-    while ~KbCheck(-1); end;
+    while ~KbCheck(-1); end
     
     [~, ~, keyCode]=KbCheck(-1);
     
