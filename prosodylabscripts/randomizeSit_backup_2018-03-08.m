@@ -12,37 +12,7 @@ function [sitSkeleton1, sitSkeleton2]= randomizeSit(sit, sitSkeleton)
     % 2 is the number of playlists the sits will be broken into
     % TO DO: SPLIT INTO 5 - 10 WORD SENTENCES
     for t=1:2
-%          for snum=5:10
-%              genvarname('sit_short',num2str(snum));
-%              sit_short_temp = sit_short(sit_short.num==snum,:);
-%              eval(['sit_short',num2str(snum) '=sit_short_temp']);
-%          end
-
-        % CREATE 2 SIT LISTS OF 5, 7, 9 AND 6, 8, 10 LENGTH WORDS
-        temp = dataset(); 
-        if (t==1)
-             for snum=5:10
-                 if (snum==5 || snum==7 || snum==9)
-                     sit_short_temp = sit_short(sit_short.num==snum,:);
-                     current_sent = sit_short_temp(randsample(length(sit_short_temp),1),:);
-                     temp = vertcat(temp, current_sent);
-                 end
-             end
-         elseif (t==2)
-             for snum=5:10
-                 if (snum==6 || snum==8 || snum==10)
-                     sit_short_temp = sit_short(sit_short.num==snum,:);
-                     current_sent = sit_short_temp(randsample(length(sit_short_temp),1),:);
-                     temp = vertcat(temp, current_sent);
-                 end
-             end
-         end
-        %sit_short_temp = sit_short(sit_short.num==snum,:);
-        %temp = sit_short(randsample(length(sit_short),sitListLength),:);
-        
-        % This line is now done in a loop to get 5, 7, 9 and 6, 8, 10
-        % length sentences
-        %temp = sit_short_temp(randsample(length(sit_short_temp),1),:);
+        temp = sit_short(randsample(length(sit_short),sitListLength),:);
         genvarname('sit',num2str(t));
         eval(['sit',num2str(t) '= temp']);
 
