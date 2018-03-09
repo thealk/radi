@@ -64,6 +64,11 @@ for p=1:length(picSkeleton)
     picSkeleton.word(p) = picList(p);
     picSkeleton.lab(p) = picList(p);
     picSkeleton.woi(p) = picList(p);
+    
+    % Split pics into 3 separate datasets
+    temp = picSkeleton(p,:);
+    genvarname('pic',num2str(p));
+    eval(['pic',num2str(p) '= temp']);
 end
 
 
@@ -92,11 +97,7 @@ dfdList4=dfdList4(:,1:end-1);
 %subTasks = [dfdList1; dfdList2; dfdList3; dfdList4; sitSkeleton1;
 %sitSkeleton2]; % This concatenates the datasets... better to put each in
 %its own cell in a cell array
-subTasks = {dfdList1; dfdList2; dfdList3; dfdList4; sitSkeleton1; sitSkeleton2};
-
-
-%rng shuffle % This needs to be at the beginning of each new script!
-
+subTasks = {dfdList1; dfdList2; dfdList3; dfdList4; sitSkeleton1; sitSkeleton2; pic1; pic2; pic3};
 
 r = randperm(length(subTasks));
 subTasks_rand = {};
@@ -104,7 +105,6 @@ for i = 1:length(r);
     subTasks_rand{i} = subTasks(r(i));
 end
 
-subTasks_rand{1:6};
 % Access a 1x6 cell array with array{1,c}{1,1}
 
 % Extract each element of the cell array subTasks_rand in order, then
@@ -116,6 +116,10 @@ for t=2:length(subTasks_rand)
     current_list = subTasks_rand{1,t}{1,1};
     new_stimuli = vertcat(new_stimuli, current_list);
 end
+
+% Add conv to new stim
+new_stimuli = vertcat(new_stimuli, conSkeleton);
+
 new_stimuli.experiment = char(new_stimuli.experiment);
 new_stimuli.tasklabel = char(new_stimuli.tasklabel);
 new_stimuli.word = char(new_stimuli.word);
