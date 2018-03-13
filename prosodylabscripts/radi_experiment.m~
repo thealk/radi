@@ -120,8 +120,8 @@ rng shuffle % This needs to be at the beginning of each new script!
     new_stimuli.experiment = char(new_stimuli.experiment);
     new_stimuli.tasklabel = char(new_stimuli.tasklabel);
     new_stimuli.word = char(new_stimuli.word);
-    new_stimuli.text = char(new_stimuli.text);
-    %new_stimuli.text = string(new_stimuli.text);
+    %new_stimuli.text = char(new_stimuli.text);
+    new_stimuli.text = string(new_stimuli.text);
     new_stimuli.lab = char(new_stimuli.lab);
     new_stimuli.woi = char(new_stimuli.woi);
 
