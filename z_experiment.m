@@ -81,7 +81,7 @@ designs={'Between' 'Blocked' 'BlockedFixed' 'Fixed'  'LatinSquare' 'Random' 'Wit
 
 % randomize order of experiments within a session, if there are multiple
 % ones
-randomizeOrderExperiments=true;
+randomizeOrderExperiments=false;
 
 % relevant paths (should be given with final '/'
 settings.path_items='1_experiment/';
@@ -200,9 +200,9 @@ end
 
 %[allItems,columnNames]=tdfimport([settings.path_items itemFile]);
 
-[new_stimuli_struct, columnNames]=radi_experiment();
+[full_stimuli_struct, columnNames]=radi_experiment();
 
-allItems = new_stimuli_struct;
+allItems = full_stimuli_struct;
 experimentNames=unique({ allItems.experiment });
 nExperiments=length(experimentNames);
 [items{1:nExperiments}]=deal([]);
