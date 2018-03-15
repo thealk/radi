@@ -11,7 +11,7 @@ clc
 % item file (should be a tab-separated files, encoded in UTF-8)
 % only columns that are labeled in the header row will be read into a data structure
 
-itemFile='radi_test_2018-02-14.txt';
+itemFile='radi_test_2018-03-15.txt';
 
 %Input and Output device (your present choice is displayed when you run
 %script.

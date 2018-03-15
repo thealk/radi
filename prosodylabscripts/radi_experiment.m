@@ -39,7 +39,7 @@ rng shuffle % This needs to be at the beginning of each new script!
 %%%%%%% 
     % CREATE TASK SUBSETS
     settings.path_items='1_experiment/';
-    dataFile='radi_test_2018-02-14.txt';
+    dataFile='radi_test_2018-03-15.txt';
     sitsFile='SITS_5-10.txt';
     %data = dataset(tdfread(settings.items "radi_test_2018-02-14.txt"));
     data = dataset(tdfread([settings.path_items dataFile]));

@@ -3,13 +3,12 @@ function [dfd1, dfd2, dfd3, dfd4]=randomizeDfd(dfd)
 % As of March 15, 2018, the DFD and hillenbrand vowel stimuli set has been
 % altered
 % Now, there are 52 stimuli:
-%   40 of the form "aCVd" where C = p t k b d g s S z h (stops and sibliants,
-%   excluding voiced palatalalveolar Z; h is included to look at all vowel contexts in neutral consonant context)
-%   12 of the form "aCod" where C = f v th dh h ch dj m n l r j w
-% As such, dfdListLength now = 13, not 9
-
+%   36 of the form "aCVd" where C = p t k b d g s S z (stops and sibliants,
+%   excluding voiced palatalalveolar Z)
+%   13 of the form "aCod" where C = f v th dh h ch dj m n l r j w
+%   3 extras with h in all vowel contexts (aheed, ahad, ahude
     dfd_short = dfd;
-    dfdListLength = 13;
+    dfdListLength = 9;
     % add column of zeros to identify which rows to remove later
     dfd_short.remove = zeros(length(dfd_short),1);
     % 4 is the number of playlists the dfd will be broken into
