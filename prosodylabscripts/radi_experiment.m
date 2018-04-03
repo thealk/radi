@@ -1,4 +1,4 @@
-function [full_stimuli_struct, columnNames]=radi_experiment()
+function [new_stimuli_struct, columnNames]=radi_experiment()
 
 % Modified experiment file for RADI experiment
 rng shuffle % This needs to be at the beginning of each new script!
@@ -14,7 +14,7 @@ rng shuffle % This needs to be at the beginning of each new script!
 % RANDOMIZATION SCHEME FOR EACH CONDITION:
 %   Four TASKS per rate condition:
 %       DFD
-%           4 lists x 13 stim = 52 items in total
+%           4 lists x 9 stim = 36 items in total
 %       SIT
 %           2 lists x 3 stim = 6 items in total
 %       PIC
@@ -27,45 +27,15 @@ rng shuffle % This needs to be at the beginning of each new script!
 
 %%%%%%% UNCOMMENT OUT TO EDIT TO INCLUDE 7 EXPS
 full_stimuli = dataset();
-
-%%%%%%%%%%
-% UNCOMMENT
-%%%%%%%%%%
-%for c=1:7
-%%%%%%%%%%
 for c=1:2
-    session = c;
+%%%%%%%     
 %%%%%%%     % FIX THIS FIX THIS FIX THIS
     if c==1
         current_experiment = 'habitual';
-        instr = 'instructions_habit.txt';
-        cond = 'habit';
-    elseif c==2
+    else
         current_experiment = 'faster2x';
-        instr = 'instructions_f2.txt';
-        cond = 'f2';
-    elseif c==3
-        current_experiment = 'faster3x';
-        instr = 'instructions_f3.txt';
-        cond = 'f3';
-    elseif c==4
-        current_experiment = 'faster4x';
-        instr = 'instructions_f4.txt';
-        cond = 'f4';
-    elseif c==5
-        current_experiment = 'slower2x';
-        instr = 'instructions_s2.txt';
-        cond = 's2';
-    elseif c==6
-        current_experiment = 'slower3x';
-        instr = 'instructions_s3.txt';
-        cond = 's3';
-    elseif c==7
-        current_experiment = 'slower4x';
-        instr = 'instructions_s4.txt';
-        cond = 's4';
     end
-
+%%%%%%% 
 %%%%%%% 
     % CREATE TASK SUBSETS
     settings.path_items='1_experiment/';
@@ -109,7 +79,7 @@ for c=1:2
         picSkeleton.lab(p) = picList(p);
         picSkeleton.woi(p) = picList(p);
 
-        % Split pics into 3 separate datasets
+    % Split pics into 3 separate datasets
         temp = picSkeleton(p,:);
         genvarname('pic',num2str(p));
         eval(['pic',num2str(p) '= temp']);
@@ -128,7 +98,7 @@ for c=1:2
 
     r = randperm(length(subTasks));
     subTasks_rand = {};
-    for i = 1:length(r)
+    for i = 1:length(r);
         subTasks_rand{i} = subTasks(r(i));
     end
 
@@ -147,40 +117,29 @@ for c=1:2
     % Add conv to new stim
     new_stimuli = vertcat(new_stimuli, conSkeleton);
 
-    % This is hacky af.
     %new_stimuli.experiment = char(new_stimuli.experiment);
-    new_stimuli.experiment = string(new_stimuli.experiment);
     new_stimuli.tasklabel = char(new_stimuli.tasklabel);
     new_stimuli.word = char(new_stimuli.word);
-    %new_stimuli.text = char(new_stimuli.text);
-    new_stimuli.text = string(new_stimuli.text);
+    new_stimuli.text = char(new_stimuli.text);
+    %new_stimuli.text = string(new_stimuli.text);
     new_stimuli.lab = char(new_stimuli.lab);
     new_stimuli.woi = char(new_stimuli.woi);
-    %new_stimuli.instructions = string(new_stimuli.instructions);
-    new_stimuli.conditionlabel = string(new_stimuli.conditionlabel);
-    new_stimuli.session = string(new_stimuli.session);
+
     
     %%%%%%% % CHANGE EXPERIMENT NAME
     for e = 1:length(new_stimuli.experiment)
-        new_stimuli.experiment{e} = current_experiment;
-        %new_stimuli.instructions{e} = instr;
-        new_stimuli.conditionlabel{e} = cond;
-        new_stimuli.session{e} = num2str(session);
+        %new_stimuli.experiment{e} = current_experiment;
+        new_stimuli.experiment(e) = current_experiment;
     end
     %%%%%%% 
-    
+    new_stimuli.experiment = char(new_stimuli.experiment);
     full_stimuli = [full_stimuli; new_stimuli];
-    
-    % Also hacky
-    full_stimuli.experiment = char(full_stimuli.experiment);
-    %full_stimuli.instructions = char(string(full_stimuli.instructions));
-    full_stimuli.session = str2num(char(full_stimuli.session));
     
     
     % ADD BACK IN AFTER ALL CONDITIONS ADDED
-    full_stimuli_struct = dataset2struct(full_stimuli);
-    full_stimuli_struct = transpose(full_stimuli_struct);
-    columnNames = fieldnames(full_stimuli_struct);
+    new_stimuli_struct = dataset2struct(new_stimuli);
+    new_stimuli_struct = transpose(new_stimuli_struct);
+    columnNames = fieldnames(new_stimuli_struct);
 end
     
 end
