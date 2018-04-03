@@ -1,4 +1,4 @@
-function [new_stimuli_struct, columnNames]=radi_experiment()
+function [full_stimuli_struct, columnNames]=radi_experiment()
 
 % Modified experiment file for RADI experiment
 rng shuffle % This needs to be at the beginning of each new script!
@@ -98,7 +98,7 @@ for c=1:2
 
     r = randperm(length(subTasks));
     subTasks_rand = {};
-    for i = 1:length(r);
+    for i = 1:length(r)
         subTasks_rand{i} = subTasks(r(i));
     end
 
@@ -130,16 +130,28 @@ for c=1:2
     for e = 1:length(new_stimuli.experiment)
         %new_stimuli.experiment{e} = current_experiment;
         new_stimuli.experiment(e) = current_experiment;
+        new_stimuli.session(e) = c;
     end
     %%%%%%% 
     new_stimuli.experiment = char(new_stimuli.experiment);
+
     full_stimuli = [full_stimuli; new_stimuli];
     
     
+    full_stimuli.experiment = char(full_stimuli.experiment);
+    %full_stimuli.instructions = char(string(full_stimuli.instructions));
+    %full_stimuli.session = str2num(char(full_stimuli.session));
+   
+    
     % ADD BACK IN AFTER ALL CONDITIONS ADDED
-    new_stimuli_struct = dataset2struct(new_stimuli);
-    new_stimuli_struct = transpose(new_stimuli_struct);
-    columnNames = fieldnames(new_stimuli_struct);
+    %new_stimuli_struct = dataset2struct(new_stimuli);
+    %new_stimuli_struct = transpose(new_stimuli_struct);
+    %columnNames = fieldnames(new_stimuli_struct);
+    full_stimuli_struct = dataset2struct(full_stimuli);
+    full_stimuli_struct = transpose(full_stimuli_struct);
+    columnNames = fieldnames(full_stimuli_struct);
+    
+
 end
     
 end
