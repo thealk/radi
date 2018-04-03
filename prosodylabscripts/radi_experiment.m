@@ -32,12 +32,12 @@ for c=1:2
 %%%%%%%     % FIX THIS FIX THIS FIX THIS
     if c==1
         current_experiment = 'habitual';
-        instr = 'instructions_h0.txt';
-        cond = 'habit';
+        %instr = 'instructions.txt';
+        %cond = 'habit';
     else
         current_experiment = 'faster2x';
-        instr = 'instructions_f2.txt';
-        cond = 'f2';
+        %instr = 'instructions.txt';
+        %cond = 'f2';
     end
 %%%%%%% 
 %%%%%%% 
@@ -128,22 +128,22 @@ for c=1:2
     %new_stimuli.text = string(new_stimuli.text);
     new_stimuli.lab = char(new_stimuli.lab);
     new_stimuli.woi = char(new_stimuli.woi);
-    new_stimuli.conditionlabel = string(new_stimuli.conditionlabel);
-    new_stimuli.instructions = string(new_stimuli.instructions);
+%    new_stimuli.conditionlabel = string(new_stimuli.conditionlabel);
+%    new_stimuli.instructions = string(new_stimuli.instructions);
 
     
     %%%%%%% % CHANGE EXPERIMENT NAME
     for e = 1:length(new_stimuli.experiment)
         %new_stimuli.experiment{e} = current_experiment;
         new_stimuli.experiment(e) = current_experiment;
-        new_stimuli.conditionlabel(e) = cond;
-        new_stimuli.instructions(e) = instr;
+%        new_stimuli.conditionlabel(e) = cond;
+%        new_stimuli.instructions(e) = instr;
         new_stimuli.session(e) = c;
     end
     %%%%%%% 
     new_stimuli.experiment = char(new_stimuli.experiment);
     %new_stimuli.conditionlabel = char(new_stimuli.conditionlabel);
-    new_stimuli.instructions = char(new_stimuli.instructions);
+%    new_stimuli.instructions = char(new_stimuli.instructions);
 
     full_stimuli = [full_stimuli; new_stimuli];
     
