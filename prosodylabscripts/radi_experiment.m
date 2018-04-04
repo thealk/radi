@@ -27,17 +27,39 @@ rng shuffle % This needs to be at the beginning of each new script!
 
 %%%%%%% UNCOMMENT OUT TO EDIT TO INCLUDE 7 EXPS
 full_stimuli = dataset();
-for c=1:2
+for c=1:7
 %%%%%%%     
 %%%%%%%     % FIX THIS FIX THIS FIX THIS
     if c==1
         current_experiment = 'habitual';
-        instr = 'instructions_h0.txt';
-        cond = 'habit';
-    else
+        instr = 'instructions_h1.txt';
+        cond = 'h1';
+    elseif c==2
         current_experiment = 'faster2x';
         instr = 'instructions_f2.txt';
         cond = 'f2';
+    elseif c==3
+        current_experiment = 'faster3x';
+        instr = 'instructions_f3.txt';
+        cond = 'f3';
+    elseif c==4
+        current_experiment = 'faster4x';
+        instr = 'instructions_f4.txt';
+        cond = 'f4';
+    elseif c==5
+        current_experiment = 'slower2x';
+        instr = 'instructions_s2.txt';
+        cond = 's2';
+    elseif c==6
+        current_experiment = 'slower3x';
+        instr = 'instructions_s3.txt';
+        cond = 's3';
+    elseif c==7
+        current_experiment = 'slower4x';
+        instr = 'instructions_s4.txt';
+        cond = 's4';
+    else
+        disp(['c exceeds the number of allowed iterations (7)']);
     end
 %%%%%%% 
 %%%%%%% 
@@ -124,7 +146,8 @@ for c=1:2
     %new_stimuli.experiment = char(new_stimuli.experiment);
     new_stimuli.tasklabel = char(new_stimuli.tasklabel);
     new_stimuli.word = char(new_stimuli.word);
-    new_stimuli.text = char(new_stimuli.text);
+    new_stimuli.text = string(new_stimuli.text);
+    %new_stimuli.text = char(string(new_stimuli.text));
     %new_stimuli.text = string(new_stimuli.text);
     new_stimuli.lab = char(new_stimuli.lab);
     new_stimuli.woi = char(new_stimuli.woi);
@@ -139,11 +162,16 @@ for c=1:2
         new_stimuli.conditionlabel(e) = cond;
         new_stimuli.instructions(e) = instr;
         new_stimuli.session(e) = c;
+        % NOTE: Cannot set different condition numbers because each
+        % "condition" is technically a new experiment. Instead, use
+        % condition label
+        %new_stimuli.condition(e) = c;
     end
     %%%%%%% 
     new_stimuli.experiment = char(new_stimuli.experiment);
-%    new_stimuli.conditionlabel = char(new_stimuli.conditionlabel);
-%    new_stimuli.instructions = char(new_stimuli.instructions);
+    new_stimuli.conditionlabel = char(new_stimuli.conditionlabel);
+    new_stimuli.instructions = char(new_stimuli.instructions);
+    new_stimuli.text = char(new_stimuli.text);
 
     full_stimuli = [full_stimuli; new_stimuli];
     
@@ -151,6 +179,7 @@ for c=1:2
     full_stimuli.experiment = char(full_stimuli.experiment);
     full_stimuli.instructions = char(string(full_stimuli.instructions));
     full_stimuli.conditionlabel = char(string(full_stimuli.conditionlabel));
+    %full_stimuli.text = char(string(full_stimuli.text));
     %full_stimuli.session = str2num(char(full_stimuli.session));
    
     
