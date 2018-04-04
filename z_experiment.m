@@ -94,12 +94,13 @@ settings.path_soundfiles='2_data/1_soundfiles/';
 settings.path_images='2_images/';
 
 % space between lines in instruction
-settings.linespace=30;
+settings.linespace=40;
 % fontsize
-% size 36 is good for the stimuli text in Radi
-settings.textsize = 36;
+% size 36 is good for the stimuli text in Radi, maybe a bit large for
+% instructions
+settings.textsize = 30;
 % textwidth
-settings.textwidth = 120;
+settings.textwidth = 100;
 
 %
 % Messages to the Participant
@@ -120,13 +121,17 @@ settings.retrialMessage2 ='Ok! Press a key when you''ready to repeat the trial!'
 %settings.messageThankYou='Thank You!';
 settings.messageThankYou='Thank You!';
 
-settings.messagey=300;
+% MOVE STIMULI TEXT ON SCREEN
+settings.messagey=100;
 settings.messagex=20;
 
+% No context needed for Radi
 settings.contexty=400;
 settings.contextx=50;
 
-settings.texty=600;
+% Moved text to be closer to middle of screen (300)
+%settings.texty=600;
+settings.texty=300;
 settings.textx=50;
 
 % additional column names
