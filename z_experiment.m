@@ -81,7 +81,7 @@ designs={'Between' 'Blocked' 'BlockedFixed' 'Fixed'  'LatinSquare' 'Random' 'Wit
 
 % randomize order of experiments within a session, if there are multiple
 % ones
-randomizeOrderExperiments=false;
+randomizeOrderExperiments=true;
 
 % relevant paths (should be given with final '/'
 settings.path_items='1_experiment/';
@@ -96,7 +96,8 @@ settings.path_images='2_images/';
 % space between lines in instruction
 settings.linespace=30;
 % fontsize
-settings.textsize = 20;
+% size 36 is good for the stimuli text in Radi
+settings.textsize = 36;
 % textwidth
 settings.textwidth = 120;
 
