@@ -27,7 +27,8 @@ rng shuffle % This needs to be at the beginning of each new script!
 
 %%%%%%% UNCOMMENT OUT TO EDIT TO INCLUDE 7 EXPS
 full_stimuli = dataset();
-for c=1:7
+for c=1:2
+%for c=1:7
 %%%%%%%     
 %%%%%%%     % FIX THIS FIX THIS FIX THIS
     if c==1
