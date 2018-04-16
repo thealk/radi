@@ -1,4 +1,4 @@
-
+Testing github upload from dell
 # LAGGY CLICKS WHEN EXPERIMENT RUNS
 Especially on Dell. Think this has to do with the sound files... if there is a clear noise (click or vocalization), there seems to be no lag. It may be that the recording needs to be "triggered".
 
