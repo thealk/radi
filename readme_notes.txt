@@ -1,4 +1,9 @@
+
+# LAGGY CLICKS WHEN EXPERIMENT RUNS
+Especially on Dell. Think this has to do with the sound files... if there is a clear noise (click or vocalization), there seems to be no lag. It may be that the recording needs to be "triggered".
+
 # Images
+## NO LONGER INCLUDING IMAGES. Will show participants a full size print out picture instead.
 Had to modify RunSession.m on line 121 to read :imdata=imread([ settings.path_images  playList{i}(k).picture]);
 because did not specify settings.path
 
