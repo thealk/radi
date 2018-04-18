@@ -1,5 +1,5 @@
 % Main experiment method
-InitializePsychSound;
+
 commandwindow
 
 close all
@@ -23,9 +23,10 @@ itemFile='radi_test_2018-03-15.txt';
 
 % settings for mac mini with USB: both should be '1'
 % settings for mac laptop: usually '0' for input, '1' for default output
-
+% settings for Dell: 1 for both with USB preamp
 settings.outputdevice=1;
-settings.inputdevice=0;
+%settings.inputdevice=0;
+settings.inputdevice=1;
 
 % Design: Needs to be specified in column 'design' in experiment spreadsheet
 % Options:
@@ -98,7 +99,7 @@ settings.linespace=40;
 % fontsize
 % size 36 is good for the stimuli text in Radi, maybe a bit large for
 % instructions
-settings.textsize = 30;
+settings.textsize = 40;
 % textwidth
 settings.textwidth = 100;
 
@@ -142,9 +143,12 @@ settings.additionalColNames={'participant','playlist','experimentTrial','session
 % Other Audio Settings
 %
 
-settings.samplingFrequency=22050;
-settings.maxsecs=300;
-settings.voiceTrigger=0.05;
+%settings.samplingFrequency=22050;
+settings.samplingFrequency=44100;
+%settings.maxsecs=300;
+settings.maxsecs=3000;
+%settings.voiceTrigger=0.05;
+settings.voiceTrigger=0;
 settings.paceDelay=1; % in seconds
 
 % unify key names across operating systems
