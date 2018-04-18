@@ -1,5 +1,5 @@
 % Main experiment method
-
+InitializePsychSound;
 commandwindow
 
 close all
