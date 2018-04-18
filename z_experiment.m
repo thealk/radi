@@ -1,5 +1,5 @@
 % Main experiment method
-InitializePsychAudio;
+
 commandwindow
 
 close all
