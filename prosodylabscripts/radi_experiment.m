@@ -66,7 +66,8 @@ for c=1:2
 %%%%%%% 
     % CREATE TASK SUBSETS
     settings.path_items='1_experiment/';
-    dataFile='radi_test_2018-03-15.txt';
+    %dataFile='radi_test_2018-03-15.txt';
+    dataFile='radi_2018-04-22.txt';
     sitsFile='SITS_5-10.txt';
     %data = dataset(tdfread(settings.items "radi_test_2018-02-14.txt"));
     data = dataset(tdfread([settings.path_items dataFile]));
@@ -91,6 +92,7 @@ for c=1:2
     picSkeleton.woi = nominal(picSkeleton.woi);
 
     conSkeleton = data(data.tasklabel=='con',:);
+    probeSkeleton = data(data.tasklabel=='probe',:);
 
     % Call dfd, sit function:
     [dfdList1, dfdList2, dfdList3, dfdList4]=randomizeDfd(dfd);
@@ -121,7 +123,7 @@ for c=1:2
     dfdList4=dfdList4(:,1:end-1);
 
     % NOW JOIN
-    subTasks = {dfdList1; dfdList2; dfdList3; dfdList4; sitSkeleton1; sitSkeleton2; pic1; pic2; pic3};
+    subTasks = {dfdList1; dfdList2; dfdList3; dfdList4; sitSkeleton1; sitSkeleton2; pic1; pic2; pic3; probeSkeleton};
 
     r = randperm(length(subTasks));
     subTasks_rand = {};

@@ -11,7 +11,8 @@ clc
 % item file (should be a tab-separated files, encoded in UTF-8)
 % only columns that are labeled in the header row will be read into a data structure
 
-itemFile='radi_test_2018-03-15.txt';
+%itemFile='radi_test_2018-03-15.txt';
+itemFile='radi_2018-04-22.txt';
 
 %Input and Output device (your present choice is displayed when you run
 %script.
@@ -25,8 +26,8 @@ itemFile='radi_test_2018-03-15.txt';
 % settings for mac laptop: usually '0' for input, '1' for default output
 % settings for Dell: 1 for both with USB preamp
 settings.outputdevice=1;
-%settings.inputdevice=0;
-settings.inputdevice=1;
+settings.inputdevice=0;
+%settings.inputdevice=1;
 
 % Design: Needs to be specified in column 'design' in experiment spreadsheet
 % Options:
