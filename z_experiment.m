@@ -99,9 +99,9 @@ settings.linespace=40;
 % fontsize
 % size 36 is good for the stimuli text in Radi, maybe a bit large for
 % instructions
-settings.textsize = 40;
+settings.textsize = 36;
 % textwidth
-settings.textwidth = 100;
+settings.textwidth = 80;
 
 %
 % Messages to the Participant
@@ -159,7 +159,8 @@ settings.isi = 1; % inter stimulus interval
 
 settings.before_trial_interval = .5;
 settings.before_prompt_interval = 0;
-settings.trial_time_limit = 300;
+% Time limit: 10 minutes
+settings.trial_time_limit = 600;
 settings.experiment_time_limit = 600;
 settings.num_digits = 2;
 settings.max_addends = 8;
@@ -187,7 +188,7 @@ disp(' ');
 disp(['input device:  ' num2str(settings.inputdevice) '     '  devices(findInput).DeviceName]);
 disp(['output device:  ' num2str(settings.outputdevice) '     '  devices(findOutput).DeviceName]);
 disp(' ');
-disp('(you can change this number on line 132-133 in code)');
+disp('(you can change this number on lines 27-29 in code)');
 disp(' ');
 
 while KbCheck(-1); end
