@@ -27,46 +27,24 @@ rng shuffle % This needs to be at the beginning of each new script!
 
 %%%%%%% FOR RELIABILITY CONDITION, JUST RERUN 2X SLOWER
 full_stimuli = dataset();
-c = 8;
-%for c=1:2
+for c=1:2
 %for c=1:7
 %%%%%%%     
-%%%%%%%     % FIX THIS FIX THIS FIX THIS
+%%%%%%%    % c=3 currently not working. As a hack, the "fastest" condition
+%%%%%%%    (which is just the participant saying "she saw pattie" as fast
+%%%%%%%    as they can 2x) will just be recorded separately in praat at the
+%%%%%%%    end. Same with the graded rate task at the beginning, using the same sentence.
     if c==1
-        current_experiment = 'habitual';
-        instr = 'instructions_h1.txt';
-        cond = 'h1';
-    elseif c==2
-        current_experiment = 'faster2x';
-        instr = 'instructions_f2.txt';
-        cond = 'f2';
-    elseif c==3
-        current_experiment = 'faster3x';
-        instr = 'instructions_f3.txt';
-        cond = 'f3';
-    elseif c==4
-        current_experiment = 'faster4x';
-        instr = 'instructions_f4.txt';
-        cond = 'f4';
-    elseif c==5
-        current_experiment = 'slower2x';
-        instr = 'instructions_s2.txt';
-        cond = 's2';
-    elseif c==6
-        current_experiment = 'slower3x';
-        instr = 'instructions_s3.txt';
-        cond = 's3';
-    elseif c==7
-        current_experiment = 'slower4x';
-        instr = 'instructions_s4.txt';
-        cond = 's4';
-    elseif c==8
         current_experiment = 'slower2x_reliability';
         instr = 'instructions_s2_reliability.txt';
         cond = 's2_reliability';
-    elseif c==9
+    elseif c==2
+        current_experiment = 'faster2x_reliability';
+        instr = 'instructions_f2_reliability.txt';
+        cond = 'f2_reliability';
+    elseif c==3
         current_experiment = 'fastest';
-        instr = 'instructions_fastest.txt';
+        instr = 'fastest.txt';
         cond = 'fastest';
     else
         disp(['c exceeds the number of allowed iterations (7)']);
@@ -75,7 +53,7 @@ c = 8;
 %%%%%%% 
     % CREATE TASK SUBSETS
     settings.path_items='1_experiment/';
-    dataFile='radi_test_2018-03-15.txt';
+    dataFile='radi_2018-04-22.txt';
     sitsFile='SITS_5-10.txt';
     %data = dataset(tdfread(settings.items "radi_test_2018-02-14.txt"));
     data = dataset(tdfread([settings.path_items dataFile]));
@@ -100,6 +78,7 @@ c = 8;
     picSkeleton.woi = nominal(picSkeleton.woi);
 
     conSkeleton = data(data.tasklabel=='con',:);
+    probeSkeleton = data(data.tasklabel=='probe',:);
 
     % Call dfd, sit function:
     [dfdList1, dfdList2, dfdList3, dfdList4]=randomizeDfd(dfd);
@@ -129,8 +108,13 @@ c = 8;
     dfdList3=dfdList3(:,1:end-1);
     dfdList4=dfdList4(:,1:end-1);
 
-    % NOW JOIN
-    subTasks = {dfdList1; dfdList2; dfdList3; dfdList4; sitSkeleton1; sitSkeleton2; pic1; pic2; pic3};
+    % NOW JOIN: 
+    %   FOR RELIABILITY, JUST JOIN DFDLIST1 AND PROBE
+    if c~=3
+        subTasks = {dfdList1; probeSkeleton};
+    elseif c==3
+        subTasks = {probeSkeleton};
+    end
 
     r = randperm(length(subTasks));
     subTasks_rand = {};
@@ -150,7 +134,7 @@ c = 8;
         new_stimuli = vertcat(new_stimuli, current_list);
     end
 
-    % Add conv to new stim
+    % Add conv to new stim: NOT IN RELIABILITY CONDITION
     new_stimuli = vertcat(new_stimuli, conSkeleton);
 
     %new_stimuli.experiment = char(new_stimuli.experiment);
