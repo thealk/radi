@@ -1,12 +1,14 @@
-
 Welcome!
 
-In this experiment you will be asked to say some sentences at different rates of speech.
+In this experiment you will be asked to say some sentences 
+at different rates of speech.
+
 Please read the sentence silently to yourself first. 
 When you are ready, the investigator will press a button.
 Start speaking out loud when you see red text.
 
-For this first block, say the sentences aloud at a normal, conversational speech rate.
+For this first block, say the sentences aloud at a normal, 
+conversational speech rate.
 
 If you have any questions, ask the experimenter now. 
 Otherwise, press any key to start.

@@ -26,8 +26,8 @@ itemFile='radi_2018-04-22.txt';
 % settings for mac laptop: usually '0' for input, '1' for default output
 % settings for Dell: 1 for both with USB preamp
 settings.outputdevice=1;
-settings.inputdevice=0;
-%settings.inputdevice=1;
+%settings.inputdevice=0;
+settings.inputdevice=1;
 
 % Design: Needs to be specified in column 'design' in experiment spreadsheet
 % Options:
