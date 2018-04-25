@@ -71,6 +71,7 @@ for c=1:1
     %dataFile='radi_test_2018-03-15.txt';
     dataFile='radi_2018-04-22.txt';
     sitsFile='SITS_5-10.txt';
+    promptsFile='conversationPrompts.txt';
     %data = dataset(tdfread(settings.items "radi_test_2018-02-14.txt"));
     data = dataset(tdfread([settings.path_items dataFile]));
     data.tasklabel = nominal(data.tasklabel);
@@ -86,6 +87,12 @@ for c=1:1
     sit = dataset(tdfread([settings.path_items sitsFile]));
     % transform sit sentence column to nominal
     sit.sentence = nominal(sit.sentence);
+    
+    promptSkeleton = data(data.tasklabel=='con',:);
+    promptSkeleton.text = nominal(promptSkeleton.text);
+    prompt = dataset(tdfread([settings.path_items promptsFile]));
+    prompt.sentence = nominal(prompt.sentence);
+
 
     picSkeleton = data(data.tasklabel=='pic',:);
     picSkeleton.text = nominal(picSkeleton.text);
@@ -99,6 +106,7 @@ for c=1:1
     % Call dfd, sit function:
     [dfdList1, dfdList2, dfdList3, dfdList4]=randomizeDfd(dfd);
     [sitSkeleton1, sitSkeleton2]= randomizeSit(sit, sitSkeleton);
+    [promptSkeleton] = randomizeConvoPrompt(prompt, promptSkeleton);
 
     % Randomize pictures
     % This will need to be mixed into the other lists somehow.
@@ -146,7 +154,8 @@ for c=1:1
     end
 
     % Add conv to new stim
-    new_stimuli = vertcat(new_stimuli, conSkeleton);
+    %new_stimuli = vertcat(new_stimuli, conSkeleton);
+    new_stimuli = vertcat(new_stimuli, promptSkeleton);
 
     %new_stimuli.experiment = char(new_stimuli.experiment);
     new_stimuli.tasklabel = char(new_stimuli.tasklabel);
@@ -200,8 +209,3 @@ for c=1:1
 end
     
 end
-
-
-
-
-
