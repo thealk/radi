@@ -1,0 +1,8 @@
+sentence
+Conversation: Now turn to the examiner and say a few sentences about the following prompt. Please read the prompt aloud when you are ready. Ready? Please tell me about what you do or used to do for work.
+Conversation: Now turn to the examiner and say a few sentences about the following prompt. Please read the prompt aloud when you are ready. Ready? Please tell me about one of your favourite vacations.
+Conversation: Now turn to the examiner and say a few sentences about the following prompt. Please read the prompt aloud when you are ready. Ready? Please tell me about your family.
+Conversation: Now turn to the examiner and say a few sentences about the following prompt. Please read the prompt aloud when you are ready. Ready? Please tell me about what you like to do in your free time.
+Conversation: Now turn to the examiner and say a few sentences about the following prompt. Please read the prompt aloud when you are ready. Ready? Please tell me about where you grew up.
+Conversation: Now turn to the examiner and say a few sentences about the following prompt. Please read the prompt aloud when you are ready. Ready? Please tell me about your favourite food or foods.
+Conversation: Now turn to the examiner and say a few sentences about the following prompt. Please read the prompt aloud when you are ready. Ready? Please tell me about a TV show or a book that you like.
