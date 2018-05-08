@@ -41,7 +41,7 @@ for i=1:nSegments
     text=[text chunks{i} ' '];
     
     DrawFormattedText(screen.ptr, double(settings.message2),settings.messagex,settings.messagey,[255, 0, 0, 255],settings.textwidth,[],[],1.2);
-    DrawFormattedText(screen.ptr, double(text),settings.textx,settings.texty,0,settings.textwidth,[],[],1.2);
+    DrawFormattedText(screen.ptr, double(text),settings.textx,settings.texty,0,settings.textwidth,[],[],1.2, color='red');
     Screen('Flip',screen.ptr);
     
     % Want to start via VoiceTrigger?

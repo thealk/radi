@@ -8,7 +8,8 @@ function showSentence(ws, context, text, settings)
         
         DrawFormattedText(ws.ptr, double(context),50,300,0,settings.textwidth,[],[],1.2);
         
-        DrawFormattedText(ws.ptr, double(text),50,500,0,settings.textwidth,[],[],1.2);
+        DrawFormattedText(ws.ptr, double(text),50,500,0,settings.textwidth,[],[],1.2, color='red');
+       
         
         Screen('DrawText', ws.ptr, double(settings.messageShow),50,600);
        
