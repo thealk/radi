@@ -25,7 +25,7 @@ while ~feof(fid)
         text=native2unicode(line,'UTF-8');
  
         y=50+(linecounter*settings.linespace);
-        Screen('DrawText', ws.ptr, double(text),15,y);
+        Screen('DrawText', ws.ptr, double(text),15,y,0);
     else
         linecounter=linecounter+1;
     end
