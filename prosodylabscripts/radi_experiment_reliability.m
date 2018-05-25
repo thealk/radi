@@ -35,11 +35,11 @@ for c=1:2
 %%%%%%%    as they can 2x) will just be recorded separately in praat at the
 %%%%%%%    end. Same with the graded rate task at the beginning, using the same sentence.
     if c==1
-        current_experiment = 'slower2x_reliability';
+        current_experiment = 's2Reliability';
         instr = 'instructions_s2_reliability.txt';
         cond = 's2_reliability';
     elseif c==2
-        current_experiment = 'faster2x_reliability';
+        current_experiment = 'f2Reliability';
         instr = 'instructions_f2_reliability.txt';
         cond = 'f2_reliability';
     elseif c==3
