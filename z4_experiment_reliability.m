@@ -100,9 +100,10 @@ settings.linespace=40;
 % fontsize
 % size 36 is good for the stimuli text in Radi, maybe a bit large for
 % instructions
-settings.textsize = 36;
+settings.textsize = 68;
+settings.instrtextsize = 36;
 % textwidth
-settings.textwidth = 80;
+settings.textwidth = 40;
 
 %
 % Messages to the Participant
@@ -112,8 +113,8 @@ settings.textwidth = 80;
 % so I know which line is which!
 
 %settings.message ='Read silently. Press any key when you''re ready for the dialogue.';
-settings.message ='Please read the sentence silently. Click any key when you''re ready to record!';
-settings.message2 ='Please say the sentence out loud now. Press any key when you''re done recording!';
+settings.message ='Please read the sentence silently.';
+settings.message2 ='Please say the sentence out loud now.';
 settings.message3 ='Press any key when you''re ready for the next trial!';
 settings.message4 ='Press any key when you''re ready for the next sentence!';
 settings.message5 ='Now say the same sentence, but faster!';
@@ -133,7 +134,7 @@ settings.contextx=50;
 
 % Moved text to be closer to middle of screen (300)
 %settings.texty=600;
-settings.texty=300;
+settings.texty=400;
 settings.textx=50;
 
 % additional column names
@@ -407,9 +408,10 @@ for i=1:nSessions
     % Making sure font settings are correct
     Screen('Preference', 'TextRenderer', 1 );
     Screen('Preference','TextEncodingLocale','UTF-8');
-    Screen('TextSize', ws.ptr, settings.textsize);
+    Screen('TextSize', ws.ptr, settings.instrtextsize);
     
     displayInstructions(ws, [settings.path_instructions instructions{i}], settings);
+    Screen('TextSize',ws.ptr, settings.textsize);
     RunSession(i,sessions{i}, playList, nTrials, pList, participant, responsesFilename, settings, ws);
     
 end

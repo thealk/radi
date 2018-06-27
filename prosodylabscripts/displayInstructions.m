@@ -1,7 +1,7 @@
 
 function displayInstructions(ws,filename,settings)
 
-Screen('TextSize',ws.ptr,settings.textsize);
+Screen('TextSize',ws.ptr,settings.instrtextsize);
 
 
 fid = fopen(filename,'r', 'l', 'UTF-8');

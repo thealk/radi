@@ -5,7 +5,9 @@
 function askReady(ws,text,settings)
         
         %DrawFormattedText(ws.ptr,text,'center','center',0);
-        Screen('DrawText', ws.ptr, double(text),100,settings.messagey,0);
+        Screen('TextSize',ws.ptr, settings.textsize);
+        %Screen('DrawText', ws.ptr, double(text),100,settings.messagey,0);
+        DrawFormattedText(ws.ptr, text, settings.messagex, settings.messagey, 0, settings.textwidth, [], [], 1.2)
         
         while KbCheck([-1]); end; 
         Screen('Flip',ws.ptr);
